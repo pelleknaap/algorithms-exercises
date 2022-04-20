@@ -4,13 +4,28 @@ import { App, snapshot, done, clear } from "./sort-visualizer";
 
 import "./sort.css";
 
-function sort(array) {
-  // do cool stuff here
+function sort(nums) {
+  // Sentinel variable
+  let swapped = false;
+  const correctMatches = {};
 
-  // call snapshot any time you do anything to the array
-  // it's okay if you call it with duplicate value array,
-  // it will deduplicate for you
-  snapshot(array);
+  do {
+    swapped = false;
+
+    for (let i = 0; i < nums.length; i++) {
+      const j = i + 1;
+      snapshot(nums);
+
+      if (nums[i] > nums[j]) {
+        const temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+
+  snapshot(nums);
 }
 
 export default function SortComponent() {

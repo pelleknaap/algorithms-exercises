@@ -9,11 +9,23 @@
  
  */
 
-function nestedAdd(array) {
-  // write code here
+function nestedAdd(val) {
+  let totalSum = 0;
+
+  for (let i = 0; i < val.length; i++) {
+    const current = val[i];
+
+    if (typeof current === "number") {
+      totalSum += current;
+    } else {
+      totalSum += nestedAdd(current);
+    }
+  }
+
+  return totalSum;
 }
 
-test.skip("nested arrays addition", () => {
+test("nested arrays addition", () => {
   expect(nestedAdd([1, 2, 3])).toEqual(6);
   expect(nestedAdd([1, [2], 3])).toEqual(6);
   expect(nestedAdd([[[[[[[[[5]]]]]]]]])).toEqual(5);
