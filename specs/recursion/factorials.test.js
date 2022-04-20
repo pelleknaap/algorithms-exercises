@@ -10,13 +10,30 @@
   factorial(3) = 6 
 */
 
-function factorial(n) {}
+const map = {
+  1: 1,
+  2: 2,
+  3: 6
+};
+
+function factorial(n) {
+  let sum = 0;
+
+  if (map[n]) {
+    return map[n];
+  } else {
+    sum += n * factorial(n - 1);
+  }
+
+  return sum;
+}
 
 // unit tests
 // do not modify the below code
-test.skip("factorials", () => {
+test("factorials", () => {
   expect(factorial(1)).toEqual(1);
   expect(factorial(2)).toEqual(2);
   expect(factorial(3)).toEqual(6);
+  expect(factorial(4)).toEqual(24);
   expect(factorial(10)).toEqual(3628800);
 });
